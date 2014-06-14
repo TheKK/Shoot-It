@@ -25,7 +25,9 @@ OBJ_PATH = $(PWD)/obj
 OBJ = main.o \
       window.o \
       timer.o \
-      titleScreen.o
+      titleScreen.o \
+      stage1.o \
+      stage2.o
 
 OUT_EXE= shoot
 

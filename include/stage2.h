@@ -41,7 +41,7 @@ class Stage2: public GameState
 		void Render();
 	private:
 		int vanishTime = 50;
-		int currentTime = vanishTime;
+		int currentTime = 0;
 
 		void CleanUp();
 };

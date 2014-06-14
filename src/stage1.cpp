@@ -20,16 +20,19 @@ void
 Stage1::EventHandler(SDL_Event* event)
 {
 	switch (event->type) {
-		case SDL_QUIT:		//JUST FOR DEBUGING
-			gameIsRunning = false;
-			gameState = GAME_QUIT;
+		case SDL_QUIT:
+			clickCount++;
+			SDL_SetRenderDrawColor(Window::m_Renderer, 0xff, 0x00, 0x00, 0xff);
+			SDL_SetWindowGrab(Window::m_Window, SDL_TRUE);
+			break;
+		case SDL_KEYDOWN:		//JUST FOR DEBUGING
+			if (event->key.keysym.sym == SDLK_F12) {
+				gameIsRunning = false;
+				gameState = GAME_QUIT;
+			}
 			break;
 		case SDL_MOUSEBUTTONDOWN:
-			if (++clickCount == 10) {
-				gameIsRunning = false;
-				gameState = GAME_STAGE_2;
-			}
-
+			clickCount++;
 			SDL_SetRenderDrawColor(Window::m_Renderer, 0xff, 0x00, 0x00, 0xff);
 			break;
 	}
@@ -41,6 +44,11 @@ Stage1::Update()
 	stringstream windowTitle;
 	windowTitle << "Click: " << clickCount;
 	Window::SetTitle(windowTitle.str());
+
+	if (clickCount == 10) {
+		gameIsRunning = false;
+		gameState = GAME_STAGE_2;
+	}
 }
 
 void

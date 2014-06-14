@@ -28,21 +28,19 @@ TitleScreen::EventHandler(SDL_Event* event)
 			timesYouTryToExit++;
 			switch (timesYouTryToExit) {
 				case 1:
-					Window::SetTitle("NO! You haven't play it");
+					SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_ERROR, "NO! You haven't play it", "You can not pass", Window::m_Window);
 					break;
 				case 2:
-					Window::SetTitle("I say no");
+					SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_ERROR, "I say no", "You can not pass", Window::m_Window);
 					break;
 				case 3:
-					Window::SetTitle("I SAY NO!!");
+					SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_ERROR, "I SAY NO!!", "You can not pass", Window::m_Window);
 					break;
 				case 4:
-					Window::SetTitle("NOOOOOO");
+					SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_ERROR, "NOOOOOOOOO!!!!!", "You can not pass", Window::m_Window);
 					break;
 				case 5:
-					Window::SetTitle("Fine... you won");
-					break;
-				case 6:
+					SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_ERROR, "Fine......You won", "You can pass now", Window::m_Window);
 					gameIsRunning = false;
 					gameState = GAME_QUIT;
 					break;
